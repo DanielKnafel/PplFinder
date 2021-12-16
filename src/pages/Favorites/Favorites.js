@@ -22,7 +22,7 @@ const Favorites = () => {
       </S.Header>
         <Button label={'Clear Favorites'} color={C.COLORS.secondary} variant={C.VARIANT.outlined} onClick={handleClearClick}/>
         <br/>
-        <UserList users={favorites} isLoading={false} />
+        <UserList users={favorites} isLoading={false} emptyMessage={'No favorites.\n Try adding some by clicking their heart icon!'}/>
     </S.Content>
   );
 };

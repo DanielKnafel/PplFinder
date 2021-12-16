@@ -7,7 +7,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 import { useFavorites } from "Contexts/FavoritesContext";
 
-const UserList = ({ users, isLoading }) => {
+const UserList = ({ users, isLoading, emptyMessage }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
   // a context for manipulating the favorites list
   const { favorites, applyFavorite } = useFavorites()
@@ -15,6 +15,9 @@ const UserList = ({ users, isLoading }) => {
   const [isFiltered,setIsFiltered] = useState(false)
   // a list of all active filters
   const [filters, setFilters] = useState([]);
+  // displayed users count
+  // const [userCount, setUserCount] = useState(0)
+  var userCount = 0;
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index);
@@ -62,7 +65,8 @@ const UserList = ({ users, isLoading }) => {
       <S.List>
         {users.map((user, index) => {
           // render the user, if it matches the current filters, or no filters are active
-          if (!isFiltered || filters[user.location.country])
+          if (!isFiltered || filters[user.location.country]) {
+            userCount++;
             return (
                 <S.User
                   key={index}
@@ -89,13 +93,18 @@ const UserList = ({ users, isLoading }) => {
                   </S.IconButtonWrapper>
                 </S.User>
             );
-          else
+          } else
             return null
         })}
         {isLoading && (
           <S.SpinnerWrapper>
             <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
           </S.SpinnerWrapper>
+        )}
+        {!isLoading && userCount == 0 && (
+          <Text size="30px">
+            {emptyMessage}
+          </Text>
         )}
       </S.List>
     </S.UserList>

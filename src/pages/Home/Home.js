@@ -15,7 +15,7 @@ const Home = () => {
             PplFinder
           </Text>
         </S.Header>
-        <UserList users={users} isLoading={isLoading} />
+        <UserList users={users} isLoading={isLoading} emptyMessage={"No users found. Try another filter."}/>
       </S.Content>
     </S.Home>
   );
