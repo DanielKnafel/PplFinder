@@ -7,7 +7,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 import { useFavorites } from "Contexts/FavoritesContext";
 
-const UserList = ({ users, isLoading, emptyMessage }) => {
+const UserList = ({ users, isLoading, emptyMessage = "" }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
   // a context for manipulating the favorites list
   const { favorites, applyFavorite } = useFavorites()
