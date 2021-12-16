@@ -1,5 +1,5 @@
 {
-  "homepage": "http://DanielKnafel.github.io/pplFinder",
+  "homepage": "http://DanielKnafel.github.io/PplFinder",
   "name": "ppl-finder",
   "version": "1.0.7",
   "bin": "./bin/cli.js",
